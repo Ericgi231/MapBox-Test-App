@@ -1,15 +1,13 @@
 import { useState } from 'react'
-import './App.css'
+import './Home.css'
 
-function App() {
+function Home() {
   const [result, setResult] = useState('Result will appear here...');
   const [name, setName] = useState('');
 
-  const API_URL = 'http://localhost:8000';
-
   const testHello = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/hello`);
+      const response = await fetch(`/api/hello`);
       const data = await response.json();
       setResult(`Success!\n${data.message}`);
     } catch (error) {
@@ -24,7 +22,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/greet/${name}`);
+      const response = await fetch(`/api/greet/${name}`);
       const data = await response.json();
       setResult(`Success!\n${data.message}`);
     } catch (error) {
@@ -60,4 +58,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
